@@ -51,7 +51,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 menu,
 nav,
 section {
@@ -289,6 +288,7 @@ label {
   position: fixed;
   width: 100%;
 }
+
 #restaurant-name {
   color: #71b5e4;
   font-size: 32px;
@@ -367,7 +367,7 @@ label {
 /* ====================== Media Breakpoints ====================== */
 @media screen and (min-width: 414px) and (max-width: 619px) {
 	.inside #map-container {
-    margin-top: 90px;
+    margin-top: 100px;
     max-width: 100%;
 	}
 }
@@ -381,45 +381,41 @@ label {
 @media screen and (min-width: 650px) {
 	.filter-options > select {
 		width: 250px;
-		margin-left: auto;
-		margin-right: auto;
+		margin: auto;
 	}
 	.filter-options > h2 {
 		font-size: 16px;
 	}
 	.filter-options {
-		padding-top: 3px;
+		padding-top: 5px;
 	}
 	#restaurants-list > li {
 		width: 40%;
 	}
 }
 
-@media screen and (min-width: 620px) and (max-width: 900px) {
-	.inside #map-container {
-		margin-top: 95px;
-	}
-	#restaurant-container {
-		margin-top: 20px;
-		display: flex;
-		flex-wrap: wrap;
-	}
-	#res-info {
-		width: 50%;
-		margin-right: 5%;
-	}
-	#res-details {
-		width: 40%;
-		margin-left: 5%;
-		padding-top: 10%;
-	}
-}
+@media screen and (max-width: 650px) {
+  /* thanks to Mohammed Riaad for the assist here! */
+  .inside #map-container {
+    order: 2;
+    top: 50px;
+    position: relative;
+    height: 300px;
+    width: 100vw;
+  }
 
-@media screen and (min-width: 720px) {
-  #restaurant-list-li {
-    max-width: 50%;
+  #restaurant-container,
+  #restaurant-hours tr,
+  #reviews-container {
+    width: 100%;
+  }
+
+
+  #reviews-list p {
+    font-size: 14px;
   }
 }
+
 
 @media screen and (min-width: 750px) and (max-width: 900px) {
 	.inside #map-container {
@@ -429,11 +425,7 @@ label {
 		display: flex;
 		flex-wrap: wrap;
 	}
-	#reviews-container li {
-		width: 35%;
-		margin-left: auto;
-		margin-right: auto;
-	}
+
 }
 
 @media screen and (min-width: 900px) {
@@ -454,14 +446,10 @@ label {
 	footer {
 		font-size: 16px;
 	}
-	#all-info-container {
-		margin-top: 145px;
-		width: 50%;
-		order: -1;
-	}
+
 	.inside #map-container {
-		margin-right: 2%;
-		width: 48%;
+		margin-right: auto;
+		width: 50%;
 
 	}
 	.inside #map {
@@ -469,11 +457,6 @@ label {
 	}
 }
 
-@media screen and (min-width: 1469px) {
-	#restaurants-list > li {
-		width: 25%;
-	}
-}
 
 @media screen and (max-width: 800px) {
 	#restaurants-list li h1{
@@ -483,4 +466,17 @@ label {
 	#restaurants-list li p{
 		font-size: 18px;
 	}
+}
+
+@media screen and (max-width: 500px) {
+
+	#restaurant-cuisine {
+		letter-spacing: normal;
+	}
+
+	#restaurant-address {
+		font-size: 16px;
+	}
+
+
 }
