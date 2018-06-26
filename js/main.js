@@ -88,18 +88,7 @@ initMap = () => {
 
   updateRestaurants();
 }
-/* window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-} */
+
 
 /**
  * Update page and map for current restaurants.
@@ -129,12 +118,12 @@ updateRestaurants = () => {
  */
 resetRestaurants = (restaurants) => {
   // Remove all restaurants
-  self.restaurants = [];
+  self.restaurants = []; // clears the array
   const ul = document.getElementById('restaurants-list');
-  ul.innerHTML = '';
+  ul.innerHTML = ''; // clears the HTML from the unordered list
 
   // Remove all map markers
-  if (self.markers) {
+  if (self.markers) { // this is a truthy value
     self.markers.forEach(marker => marker.remove());
   }
   self.markers = [];
@@ -198,13 +187,26 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 
 }
-/* addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
-    });
-    self.markers.push(marker);
+
+
+/*
+Register service worker
+*/
+
+if ('!serviceWorker' in navigator) {
+  navigator.serviceWorker.register('../sw.js')
+  .then((reg) => {
+    // if registration worked
+    if(reg.installing) {
+      console.log('Service worker is installing');
+    } else if(reg.waiting) {
+      console.log('Service worker is installed');
+    } else if(reg.active) {
+      console.log('Service worker is active');
+}
+    console.log('Registration succeeded!');
+  }).catch((error) => {
+    // if registration failed
+    console.log(`Oh no! Registration failed with ${error}`);
   });
-} */
+}
