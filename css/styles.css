@@ -234,9 +234,14 @@ label {
   text-transform: uppercase;
 }
 
+
 #restaurants-list p {
   margin: 0 0 0 10px;
   font-size: 20px;
+}
+
+#restaurants-list p:first-of-type{
+	font-style: italic;
 }
 
 #restaurants-list li a {
@@ -250,6 +255,12 @@ label {
   text-decoration: none;
   text-transform: uppercase;
   width: 100%;
+	transition: 0.5s;
+}
+
+#restaurants-list li a:hover {
+	background-color: #cddaa2;
+	color: #383f51;
 }
 
 /* ====================== Restaurant Details ====================== */
